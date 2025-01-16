@@ -1,0 +1,59 @@
+<app-common-panel>
+  <p panel-header>
+    Write <b class="text-primary">Ben John</b> a review for him to see.
+  </p>
+  <ng-container panel-content>
+
+    <form class="bn-form">
+      <div class="company-row">
+        <mat-form-field>
+          <mat-label>Company Name</mat-label>
+          <input
+            matInput
+            name="companyName"
+            class="ut-company-name"
+            [required]="true"
+            [(ngModel)]="review.companyName">
+          <mat-error>Your company name is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Company Representative Name</mat-label>
+          <input
+            matInput
+            name="companyRepresentative"
+            class="ut-company-rep"
+            [required]="true"
+            [(ngModel)]="review.companyRepresentative">
+          <mat-error>Your name is required.</mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field style="width: 100%">
+        <mat-label>Feedback</mat-label>
+        <textarea
+          matInput
+          placeholder="Ben is a great developer"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="30"
+          cdkAutosizeMaxRows="100"
+          name="feedback"
+          class="ut-feedback"
+          [required]="true"
+          [(ngModel)]="review.feedBack"></textarea>
+        <mat-error>Your feedback would be much appreciated.</mat-error>
+      </mat-form-field>
+
+      <div  style="text-align: right; margin-top: 1.5rem;">
+        <button
+          type="button"
+          mat-button
+          color="primary"
+          class="ut-send-feedback-btn"
+          (click)="save()">
+          Send Feedback
+        </button>
+      </div>
+    </form>
+  </ng-container>
+</app-common-panel>

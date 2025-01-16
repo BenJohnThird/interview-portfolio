@@ -1,0 +1,80 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+// Define a dark theme
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$pink-palette),
+    accent: mat.define-palette(mat.$blue-grey-palette),
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
+));
+
+// Define a light theme
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$pink-palette),
+  ),
+));
+
+html {
+  --bs-blue: #1890ff;
+  --bs-primary-rgb: #e7f4ff;
+  --bn-active-background: #f5f5f5;
+  --bn-header-background: #ffffff;
+  --bn-header-color: #262626;
+  --bn-header-shadow: 0 1px 0 0px rgb(240 240 240);
+  --bn-container: #fafafb;
+
+  --panel-heading-color: #262626;
+  --panel-body: #ffffff;
+  --panel-border-color: #e6ebf1;
+
+  --bn-secondary-color: rgba(33, 37, 41, .75);
+  --bn-text-light: #E1E1E1;
+  --bn-hover-color: #f5f5f5;
+  --bn-warning-color: #e8c33d;
+
+  --bn-nav-card: #FAFAFA;
+
+  --bn-menu-caption-color: #8c8c8c;
+  --bn-nav-item-link-hover-bg: #E7f4ff;
+  --bn-nav-a-color: #262626;
+
+  --bn-common-border-color: rgb(240, 240, 240);
+}
+
+.dark {
+  @include mat.all-component-colors($dark-theme);
+
+  --bs-blue: #1890ff;
+  --bs-primary-rgb: #2d323b;
+  --bn-header-background: #0e1217;
+  --bn-header-color: #e7e7e8;
+  --bn-container: #0e1217;
+
+  --panel-heading-color: #e7e7e8;
+  --panel-body: #1c1f26;
+  --panel-border-color: #1a1e25;
+
+  --bn-secondary-color: #a8b3cf;
+  --bn-text-light: #292d35;
+  --bn-hover-color: #e7e7e8;
+  --bn-warning-color: #e8c33d;
+
+  --bn-nav-card-bg: #1c1f26;
+  --bn-nav-card-color: #bfc0c1;
+
+  --bn-menu-caption-color: #71798c;
+  --bn-nav-item-link-hover-bg: #2d323b;
+  --bn-nav-a-color: #9da8c2;
+
+  --mat-sidenav-container-background-color: #0e1217;
+  --mat-sidenav-content-background-color: #0e1217;
+
+  --bn-common-border-color: #292d35;
+
+  --mdc-text-button-label-text-color: #9ea9c4;
+}

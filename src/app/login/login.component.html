@@ -1,0 +1,38 @@
+<div class="d-flex align-items-center justify-content-center" style="height: 60%">
+  <app-common-panel style="width: 500px;">
+    <div panel-content>
+      <div class="login-heading">Login</div>
+
+      <form class="login-form">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            name="username"
+            placeholder="Username"
+            class="ut-username"
+            [required]="true"
+            [(ngModel)]="userAuth.username">
+          <mat-error>Username is required.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            name="password"
+            placeholder="Password"
+            class="ut-password"
+            [type]="hiddenPassword ? 'password' : 'text'"
+            [required]="true"
+            [(ngModel)]="userAuth.password">
+          <mat-icon matSuffix (click)="hiddenPassword = !hiddenPassword">
+            {{hiddenPassword ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+        </mat-form-field>
+
+        <button type="button" mat-raised-button color="primary" class="login-btn" (click)="login()">Login</button>
+      </form>
+    </div>
+  </app-common-panel>
+</div>

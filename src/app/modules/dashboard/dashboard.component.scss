@@ -1,0 +1,13 @@
+.quotes-panel {
+  display: flex;
+  align-items: center;
+}
+
+.quotes-panel div {
+  font-size: 13px;
+  margin-left: 1rem;
+}
+
+.quotes-panel mat-icon {
+  color: var(--bn-warning-color);
+}

@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@import "stylesheet/theme";
+
+// Variables
+$mobile-breakpoint: 800px;
+
+// Common Styles
+@import "stylesheet/common";
+
+// Form Styles
+@import "stylesheet/forms";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Material Overrides
+.mdc-label {
+  color: var(--bn-secondary-color);
+  font-size: 13px;
+}
+

@@ -1,0 +1,23 @@
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
+}
+
+.text-primary {
+  color: var(--bs-blue);
+}
+
+.text-muted {
+  color: var(--bn-secondary-color);
+}

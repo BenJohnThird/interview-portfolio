@@ -1,0 +1,67 @@
+<nav class="bn-navbar">
+  <div class="navbar-wrapper">
+    <div class="bn-header">
+      Ben <span class="text-primary">.</span>
+    </div>
+  </div>
+
+  <div class="navbar-content">
+    <div class="card nav-card">
+      <div class="card-body">
+        <img src="assets/images/ben.jpg" alt="Ben User">
+        <div class="card-content">
+          <div class="title">Senior Software Engineer</div>
+          <span>Angular | Typescript | NodeJS | C# .NET</span>
+        </div>
+      </div>
+    </div>
+    <ul class="nav coded-inner-navbar">
+      <li class="nav-item coded-menu-caption">
+        <label>Main</label>
+      </li>
+      <li class="nav-item link" routerLinkActive="active">
+        <a routerLink="/home">
+          <mat-icon fontIcon="home"></mat-icon>
+          <span class="coded-mtext">Home</span>
+        </a>
+      </li>
+      <li class="nav-item link" routerLinkActive="active">
+        <a routerLink="/dashboard" *ngIf="isLoggedIn">
+          <mat-icon fontIcon="dashboard_customize"></mat-icon>
+          <span class="coded-mtext">Dashboard</span>
+        </a>
+      </li>
+
+      <li class="nav-item coded-menu-caption">
+        <label>Authentication</label>
+      </li>
+      <li class="nav-item link" routerLinkActive="active">
+        <a routerLink="/login" *ngIf="!isLoggedIn">
+          <mat-icon fontIcon="login"></mat-icon>
+          <span class="coded-mtext">Login</span>
+        </a>
+        <a routerLink="/logout" *ngIf="isLoggedIn">
+          <mat-icon fontIcon="logout"></mat-icon>
+          <span class="coded-mtext">Logout</span>
+        </a>
+      </li>
+
+      <li class="nav-item coded-menu-caption">
+        <label>Other</label>
+      </li>
+      <li class="nav-item link" routerLinkActive="active">
+        <a routerLink="/write-review">
+          <mat-icon fontIcon="rate_review"></mat-icon>
+          <span class="coded-mtext">Write me a review</span>
+        </a>
+      </li>
+      <li class="nav-item link" routerLinkActive="active">
+        <a routerLink="/system-configuration">
+          <mat-icon fontIcon="settings"></mat-icon>
+          <span class="coded-mtext">System Configuration</span>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

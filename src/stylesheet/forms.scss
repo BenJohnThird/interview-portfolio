@@ -1,0 +1,19 @@
+// Any form styling should be added here
+.bn-form .form-group {
+  margin-bottom: .5rem;
+}
+
+.bn-form .field {
+  display: flex;
+  align-items: center;
+}
+
+.bn-form .bn-label {
+  margin-bottom: .25rem;
+  font-size: 13px;
+  display: block;
+}
+
+.bn-form mat-icon {
+  transform: scale(.85);
+}

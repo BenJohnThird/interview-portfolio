@@ -1,0 +1,25 @@
+:host {
+  display: block;
+}
+
+.panel-header {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--panel-heading-color);
+}
+
+.panel-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: var(--panel-body);
+  background-clip: border-box;
+  border: 1px solid var(--panel-border-color);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.panel.active .panel-body {
+  border-left: 5px solid var(--bs-blue);
+}

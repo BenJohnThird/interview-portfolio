@@ -1,0 +1,21 @@
+.bn-sidebar {
+  width: 260px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 1026;
+  box-shadow: var(--pc-sidebar-shadow);
+  display: block;
+  height: 100vh;
+  border-right: 1px solid var(--bn-common-border-color);
+}
+
+.bn-container {
+  margin-top: 60px;
+  background: var(--bn-container);
+  height: calc(100vh - 60px);
+  padding-left: 48px;
+  padding-right: 48px;
+  padding-top: 24px;
+}

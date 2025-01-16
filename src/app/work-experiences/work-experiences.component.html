@@ -1,0 +1,30 @@
+<app-common-panel>
+  <p panel-header>Work Experiences</p>
+  <div panel-content>
+    <div *ngFor="let workExperience of workExperiences; let last = last">
+      <div class="company-details ut-company-details">
+        <div>
+          <div class="company-name">{{workExperience.companyName}}</div>
+          <div class="company-role">{{workExperience.companyRole}}</div>
+        </div>
+        <div class="company-span">
+          {{workExperience.startDate | date: 'MMM yyyy'}} -
+          <span *ngIf="workExperience.isCurrentCompany" class="text-primary">Present</span>
+          <span *ngIf="!workExperience.isCurrentCompany">{{workExperience.endDate | date: 'MMM yyyy'}}</span>
+        </div>
+      </div>
+
+      <div class="technology">
+        <span>Technology Used:</span>
+        <span class="ut-technology-used">{{workExperience.technologyUsed | concatValues : ' | '}}</span>
+      </div>
+
+      <ul class="responsibilities">
+        <li *ngFor="let responsibility of workExperience.responsibilities">{{responsibility}}</li>
+      </ul>
+
+      <hr class="work-experience-divider" *ngIf="!last">
+    </div>
+
+  </div>
+</app-common-panel>

@@ -1,0 +1,27 @@
+<header class="bn-header">
+  <div class="header-wrapper">
+    <div>
+      <button mat-icon-button type="button" (click)="matDrawer?.toggle()">
+        <mat-icon *ngIf="!matDrawer?.opened">menu</mat-icon>
+        <mat-icon *ngIf="matDrawer?.opened">menu_open</mat-icon>
+      </button>
+    </div>
+    <div class="d-flex align-items-center">
+      <button mat-icon-button type="button" (click)="toggleTheme()" class="ut-toggle-btn">
+        <mat-icon *ngIf="!isLightMode">light_mode</mat-icon>
+        <mat-icon *ngIf="isLightMode">dark_mode</mat-icon>
+      </button>
+      <a class="pc-head-link" [matMenuTriggerFor]="menu" *ngIf="isLoggedIn">
+        <img src="assets/images/avatar.jpg" class="user-avatar"/>
+        Hello, Ben John!
+      </a>
+    </div>
+  </div>
+</header>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/logout">
+    <mat-icon fontIcon="logout"></mat-icon>
+    Logout
+  </button>
+</mat-menu>
