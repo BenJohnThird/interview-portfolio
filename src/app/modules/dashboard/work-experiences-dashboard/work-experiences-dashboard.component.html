@@ -1,0 +1,19 @@
+<app-common-panel>
+  <p panel-header>
+    Work Experience <span class="text-primary">Management</span>
+  </p>
+  <div panel-content>
+    <app-work-experiences-form
+      [workExperience]="workExperience"
+      [last]="last"
+      [(editingId)]="editingId"
+      (saved)="getWorkExperiences()"
+      *ngFor="let workExperience of workExperiences
+      | sortBy: 'id': false; let last = last; trackBy: trackByIndex">
+    </app-work-experiences-form>
+    <div class="no-data-panel" *ngIf="!workExperiences?.length">
+      <mat-icon>lightbulb</mat-icon>
+      <div>It seems that there is no data fetched...</div>
+    </div>
+  </div>
+</app-common-panel>

@@ -17,7 +17,7 @@ export class WorkExperiencesComponent implements OnInit {
 
   public ngOnInit(): void {
     this.portfolioService
-      .getWorkExperiences()
+      .getWorkExperiencesPublic()
       .subscribe((workExperiences: WorkExperience[]) => this.workExperiences = workExperiences);
   }
 }

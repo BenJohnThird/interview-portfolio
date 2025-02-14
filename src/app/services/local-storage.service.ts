@@ -23,7 +23,7 @@ export class LocalStorageService {
    * @param localStorageKey
    * @param value
    */
-  public setLocalStorageKey(localStorageKey: string, value: boolean): void {
+  public setLocalStorageKey(localStorageKey: string, value: boolean | string): void {
     localStorage.setItem(localStorageKey, (value).toString());
   }
 

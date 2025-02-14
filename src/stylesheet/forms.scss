@@ -17,3 +17,17 @@
 .bn-form mat-icon {
   transform: scale(.85);
 }
+
+.bn-form textarea {
+  white-space: pre-wrap;
+}
+
+.bn-form .row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.bn-form .row mat-form-field {
+  width: 50%;
+}

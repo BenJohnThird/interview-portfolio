@@ -1,11 +1,11 @@
 <app-common-panel>
   <p panel-header>Work Experiences</p>
   <div panel-content>
-    <div *ngFor="let workExperience of workExperiences; let last = last">
+    <div *ngFor="let workExperience of workExperiences | sortBy: 'id': false; let last = last">
       <div class="company-details ut-company-details">
         <div>
           <div class="company-name">{{workExperience.companyName}}</div>
-          <div class="company-role">{{workExperience.companyRole}}</div>
+          <div class="company-role">{{workExperience.name}}</div>
         </div>
         <div class="company-span">
           {{workExperience.startDate | date: 'MMM yyyy'}} -
@@ -16,7 +16,7 @@
 
       <div class="technology">
         <span>Technology Used:</span>
-        <span class="ut-technology-used">{{workExperience.technologyUsed | concatValues : ' | '}}</span>
+        <span class="ut-technology-used">{{workExperience.techStack | concatValues : ' | '}}</span>
       </div>
 
       <ul class="responsibilities">

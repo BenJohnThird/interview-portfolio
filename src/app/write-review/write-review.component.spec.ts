@@ -10,10 +10,13 @@ import { MatInput } from "@angular/material/input";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import Spy = jasmine.Spy;
 import { TestingUtils } from "../testing/testing-utils";
+import { HttpClient, HttpHandler } from "@angular/common/http";
+import { ReviewServiceMock } from "../mocks/review-service.mock";
 
 describe('WriteReviewComponent', () => {
   let component: WriteReviewComponent;
   let fixture: ComponentFixture<WriteReviewComponent>;
+  let reviewService: ReviewService;
 
   let saveReviewSpy: Spy;
 
@@ -30,8 +33,10 @@ describe('WriteReviewComponent', () => {
         BrowserAnimationsModule,
       ],
       providers: [
-        ReviewService,
         ToastService,
+        HttpClient,
+        HttpHandler,
+        { provide: ReviewService, useClass: ReviewServiceMock },
       ]
     })
     .compileComponents();
@@ -39,7 +44,7 @@ describe('WriteReviewComponent', () => {
     fixture = TestBed.createComponent(WriteReviewComponent);
     component = fixture.componentInstance;
 
-    const reviewService = TestBed.get(ReviewService);
+    reviewService = TestBed.get(ReviewService);
     saveReviewSpy = spyOn(reviewService, 'addReview')
       .and
       .callThrough();
@@ -60,7 +65,7 @@ describe('WriteReviewComponent', () => {
       .toHaveBeenCalled();
   });
 
-  it('should call reviewService.addReview() when saved with values', () => {
+  it('should call reviewService.addReview() when saved with values', async () => {
     const companyNameInput = TestingUtils.queryByCss(fixture, '.ut-company-name');
     companyNameInput.nativeElement.value = 'MyBudget';
     companyNameInput.nativeElement.dispatchEvent(new Event('input'));
@@ -68,6 +73,10 @@ describe('WriteReviewComponent', () => {
     const companyRepInput = TestingUtils.queryByCss(fixture, '.ut-company-rep');
     companyRepInput.nativeElement.value = 'Ben John Villanueva III';
     companyRepInput.nativeElement.dispatchEvent(new Event('input'));
+
+    const companyRepEmailInput = TestingUtils.queryByCss(fixture, '.ut-company-rep-email');
+    companyRepEmailInput.nativeElement.value = 'test@email.com';
+    companyRepEmailInput.nativeElement.dispatchEvent(new Event('input'));
 
     const feedBackInput = TestingUtils.queryByCss(fixture, '.ut-feedback');
     feedBackInput.nativeElement.value = 'Ben John is the best at Angular';
@@ -77,6 +86,9 @@ describe('WriteReviewComponent', () => {
     sendFeedbackBtn.nativeElement.click();
 
     fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
     expect(saveReviewSpy)
       .toHaveBeenCalled();
   });

@@ -1,0 +1,150 @@
+<ng-container *ngIf="!editMode">
+  <div class="company-details">
+    <div>
+      <div class="company-name">{{workExperience.companyName}}</div>
+      <div class="company-role">{{workExperience.name}}</div>
+    </div>
+    <div class="company-span d-flex align-items-center">
+      <div>
+        {{workExperience.startDate | date: 'MMM yyyy'}} -
+        <span *ngIf="workExperience.isCurrentCompany" class="text-primary">Present</span>
+        <span *ngIf="!workExperience.isCurrentCompany">{{workExperience.endDate | date: 'MMM yyyy'}}</span>
+      </div>
+      <button
+        type="button"
+        mat-button
+        color="primary"
+        class="ut-edit-btn"
+        (click)="edit()"
+        [disabled]="isEditDisabled"
+        *ngIf="!editMode">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="technology">
+    <span>Technology Used:</span>
+    <span class="ut-technology-used">{{workExperience.techStack | concatValues : ' | '}}</span>
+  </div>
+
+  <ul class="responsibilities">
+    <li *ngFor="let responsibility of workExperience.responsibilities">{{responsibility}}</li>
+  </ul>
+</ng-container>
+
+<ng-container *ngIf="editMode">
+  <form class="bn-form" #form="ngForm">
+    <mat-form-field style="width: 100%">
+      <mat-label>Company Name</mat-label>
+      <input
+        matInput
+        name="companyName"
+        class="ut-company-name"
+        [required]="true"
+        [(ngModel)]="editWorkExperience.companyName">
+      <mat-error>Your company name is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+      <mat-label>Company Role</mat-label>
+      <input
+        matInput
+        name="companyRole"
+        class="ut-company-role"
+        [required]="true"
+        [(ngModel)]="editWorkExperience.name">
+      <mat-error>Your role is required.</mat-error>
+    </mat-form-field>
+
+    <div class="row">
+      <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input
+          matInput
+          name="startDate"
+          [required]="true"
+          [matDatepicker]="startDatePicker"
+          [(ngModel)]="editWorkExperience.startDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>End Date</mat-label>
+        <input
+          matInput
+          name="endDate"
+          [matDatepicker]="endDatePicker"
+          [(ngModel)]="editWorkExperience.endDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field style="width: 100%">
+      <mat-label>Technology Used</mat-label>
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="5"
+        cdkAutosizeMaxRows="100"
+        name="techUsed"
+        class="ut-techused"
+        [required]="true"
+        [(ngModel)]="editWorkExperience.techStackString"></textarea>
+      <mat-hint align="start">Technology used must be separated in new line</mat-hint>
+      <mat-error>Technology stack must be supplied.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%; margin-top: 15px;">
+      <mat-label>Responsibilities</mat-label>
+      <textarea
+        matInput
+        placeholder="Ben is a great developer"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="5"
+        cdkAutosizeMaxRows="100"
+        name="responsibilities"
+        class="ut-responsibilities"
+        [required]="true"
+        [(ngModel)]="editWorkExperience.responsibilitiesString"></textarea>
+      <mat-hint align="start">Responsibilities must be separated in new line</mat-hint>
+      <mat-error>Responsibilities must be supplied.</mat-error>
+    </mat-form-field>
+
+    <div style="margin-top: 10px;">
+      <mat-slide-toggle name="is-private" [(ngModel)]="editWorkExperience.isPrivate">
+        Is Private?
+      </mat-slide-toggle>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <mat-slide-toggle name="is-current-company" [(ngModel)]="editWorkExperience.isCurrentCompany">
+        Is Current Company?
+      </mat-slide-toggle>
+    </div>
+    <div style="text-align: right; margin-top: 1.5rem;">
+      <button
+        type="button"
+        mat-raised-button
+        color="warn"
+        class="ut-cancel-btn"
+        style="margin-right: 10px;"
+        (click)="cancel()">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        class="ut-save-btn"
+        (click)="save(form)">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</ng-container>
+<hr class="work-experience-divider" *ngIf="!last">

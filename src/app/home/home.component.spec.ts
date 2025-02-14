@@ -4,6 +4,10 @@ import { HomeComponent } from './home.component';
 import { WorkExperiencesComponent } from "../work-experiences/work-experiences.component";
 import { CommonPanelComponent } from "../shared/common-panel/common-panel.component";
 import { PipesModule } from "../shared/pipes/pipes.module";
+import { PortfolioService } from "../services/portfolio.service";
+import { PortfolioServiceMock } from "../mocks/portfolio-service.mock";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { HttpClient, HttpHandler } from "@angular/common/http";
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -18,6 +22,11 @@ describe('HomeComponent', () => {
       imports: [
         CommonPanelComponent,
         PipesModule,
+      ],
+      providers: [
+        HttpClient,
+        HttpHandler,
+        { provide: PortfolioService, useClass: PortfolioServiceMock },
       ]
     })
     .compileComponents();

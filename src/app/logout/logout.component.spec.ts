@@ -5,6 +5,7 @@ import { CommonPanelComponent } from "../shared/common-panel/common-panel.compon
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Router } from "@angular/router";
 import Spy = jasmine.Spy;
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -18,6 +19,7 @@ describe('LogoutComponent', () => {
       imports: [
         CommonPanelComponent,
         BrowserAnimationsModule,
+        HttpClientTestingModule,
       ],
     })
     .compileComponents();

@@ -33,12 +33,12 @@ export class LoginComponent {
     }
 
     // Check if the user is authenticated
-    const isLoggedIn = await this.authService
+    await this.authService
       .login(this.userAuth.username, this.userAuth.password)
       .toPromise();
 
     // If not, do nothing
-    if (!isLoggedIn) {
+    if (!this.authService.isLoggedIn) {
       return;
     }
 

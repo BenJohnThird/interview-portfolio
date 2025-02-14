@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/d96af9ee-3030-4026-a60c-eb5c6d1a47c4/resourceGroups/rg-interview-portfolio-prod/providers/Microsoft.Web/sites/interview-portfolio",
+    "appService.deploySubpath": "dist"
+}

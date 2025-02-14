@@ -11,10 +11,14 @@ import { AuthenticationService } from "../services/authentication.service";
 import Spy = jasmine.Spy;
 import { TestingUtils } from "../testing/testing-utils";
 import { Router } from "@angular/router";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { of } from "rxjs";
+import { AuthenticationServiceMock } from "../mocks/auth-service.mock";
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let authenticationService: AuthenticationService;
 
   let authLoginSpy: Spy;
   let routerSpy: Spy;
@@ -32,14 +36,18 @@ describe('LoginComponent', () => {
         MatError,
         MatIcon,
         BrowserAnimationsModule,
+        HttpClientTestingModule,
       ],
+      providers: [
+        { provide: AuthenticationService, useClass: AuthenticationServiceMock }
+      ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
 
-    const authenticationService = TestBed.inject(AuthenticationService);
+    authenticationService = TestBed.inject(AuthenticationService);
     authLoginSpy = spyOn(authenticationService, 'login')
       .and
       .callThrough();
@@ -82,6 +90,8 @@ describe('LoginComponent', () => {
     dispatchUserNameAndPassword(fixture, 'admin', 'admin');
     const loginBtn = TestingUtils.queryByCss(fixture, '.login-btn');
     loginBtn.nativeElement.click();
+
+    authenticationService.isLoggedIn = true;
     fixture.detectChanges();
     await fixture.whenStable();
     fixture.detectChanges();

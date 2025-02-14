@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.no-data-panel {
+  display: flex;
+  align-items: center;
+}
+
+.no-data-panel div {
+  font-size: 13px;
+  margin-left: 1rem;
+}

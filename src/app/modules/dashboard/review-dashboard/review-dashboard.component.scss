@@ -1,0 +1,22 @@
+@import "../../../work-experiences/work-experiences.component";
+
+:host {
+  display: block;
+}
+
+.review-name {
+  font-size: 20px;
+  color: var(--panel-heading-color);
+}
+
+.review-role {
+  font-size: 12px;
+  color: var(--bn-secondary-color);
+}
+
+.feedback {
+  border-top: 1px solid var(--bn-common-border-color);
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 13px;
+}

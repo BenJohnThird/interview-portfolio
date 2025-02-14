@@ -1,6 +1,7 @@
 export interface Review {
   companyName: string;
-  companyRepresentative: string;
-  feedBack: string;
+  companyRepresentativeName: string;
+  companyRepresentativeEmail: string;
+  feedback: string;
   createdDate?: Date;
 }

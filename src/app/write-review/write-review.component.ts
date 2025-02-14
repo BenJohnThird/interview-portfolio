@@ -15,7 +15,7 @@ export class WriteReviewComponent {
   @ViewChild(NgForm)
   public form!: NgForm;
 
-  public review: Review = { companyName: '', companyRepresentative: '', feedBack: '' };
+  public review: Review = { companyName: '', companyRepresentativeName: '',companyRepresentativeEmail: '', feedback: '' };
 
   constructor(
     private reviewService: ReviewService,
@@ -32,15 +32,12 @@ export class WriteReviewComponent {
     }
 
     this.review.createdDate = new Date();
-    this.reviewService.addReview(this.review);
+    this.reviewService.addReview(this.review)
+      .subscribe(() => {
+        // Reset the form;
+        this.form.resetForm();
 
-    // Reset the form;
-    this.form.resetForm();
-
-    this.toastService.showSuccess('Feedback successfully submitted');
-
-    // Check your console to check the current reviews;
-    this.reviewService.getReviews()
-      .subscribe(reviews => console.log(reviews));
+        this.toastService.showSuccess('Feedback successfully submitted');
+      });
   }
 }

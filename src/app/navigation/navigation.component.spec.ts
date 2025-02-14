@@ -4,6 +4,7 @@ import { NavigationComponent } from './navigation.component';
 import { MatIcon } from "@angular/material/icon";
 import Spy = jasmine.Spy;
 import { AuthenticationService } from "../services/authentication.service";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -16,6 +17,7 @@ describe('NavigationComponent', () => {
       declarations: [NavigationComponent],
       imports: [
         MatIcon,
+        HttpClientTestingModule,
       ]
     })
     .compileComponents();

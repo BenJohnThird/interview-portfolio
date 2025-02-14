@@ -4,6 +4,8 @@ import { NavbarComponent } from './navbar.component';
 import { MatMenu } from "@angular/material/menu";
 import { MatIcon } from "@angular/material/icon";
 import { TestingUtils } from "../testing/testing-utils";
+import { HttpClient, HttpHandler } from "@angular/common/http";
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -15,6 +17,7 @@ describe('NavbarComponent', () => {
       imports: [
         MatMenu,
         MatIcon,
+        HttpClientTestingModule,
       ]
     })
     .compileComponents();

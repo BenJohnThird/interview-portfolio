@@ -25,6 +25,13 @@ import { MatSlideToggle } from "@angular/material/slide-toggle";
 import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
 import { MatIcon } from "@angular/material/icon";
+import { InterceptorModule } from "./interceptor/interceptor.module";
+import { HttpClientModule } from "@angular/common/http";
+import { GlobalLoaderModule } from "./global-loader/global-loader.module";
+import { NgxSpinnerModule } from "ngx-spinner";
+import { MAT_DATE_FORMATS, MatNativeDateModule, provideNativeDateAdapter } from "@angular/material/core";
+import { MY_DATE_FORMATS } from "./config/date-format.config";
+import { MatDatepickerModule } from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -63,13 +70,24 @@ import { MatIcon } from "@angular/material/icon";
     MatDrawer,
     MatIcon,
     MatIconButton,
+    InterceptorModule,
+    HttpClientModule,
+    GlobalLoaderModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-fussion' }),
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'outline' }
     },
-    provideAnimationsAsync()
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: MY_DATE_FORMATS
+    }, // Provide custom date formats
+    provideAnimationsAsync(),
+    provideNativeDateAdapter()
   ],
   bootstrap: [AppComponent]
 })

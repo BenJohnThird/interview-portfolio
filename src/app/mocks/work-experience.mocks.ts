@@ -2,10 +2,11 @@ import { WorkExperience } from "../models/work-experience";
 
 export const WORK_EXPERIENCE_MOCK: WorkExperience[] = [
   {
+    id: 1,
     companyName: 'Etica Digital',
-    companyRole: 'Senior Software Engineer',
-    technologyUsed: ['Angular', 'Typescript', 'Javascript', 'AWS', 'Unit Testing', 'C# .NET'],
-    startDate: 'April 20, 2021',
+    name: 'Senior Software Engineer',
+    techStack: ['Angular', 'Typescript', 'Javascript', 'AWS', 'Unit Testing', 'C# .NET'],
+    startDate: '2021-02-15',
     isCurrentCompany: true,
     responsibilities: [
       'Conducting and discussing the needed libraries to use to each features as the\n' +
@@ -22,11 +23,15 @@ export const WORK_EXPERIENCE_MOCK: WorkExperience[] = [
       'Creating RESTFul APIs that is deployed in AWS Lambda to be consumed in\n' +
       ' frontend.',
     ],
+    techStackString: 'Conducting something',
+    responsibilitiesString: 'Responsibilities Something',
+    isPrivate: false,
+    endDate: '2021-02-15',
   },
   {
     companyName: 'Legalsight',
-    companyRole: 'Senior Software Engineer',
-    technologyUsed: ['Angular', 'Typescript', 'Javascript', 'Karma Testing', 'Unit Testing'],
+    name: 'Senior Software Engineer',
+    techStack: ['Angular', 'Typescript', 'Javascript', 'Karma Testing', 'Unit Testing'],
     startDate: 'April 5, 2020',
     endDate: 'April 29, 2021',
     responsibilities: [
@@ -44,8 +49,8 @@ export const WORK_EXPERIENCE_MOCK: WorkExperience[] = [
   },
   {
     companyName: 'Accenture',
-    companyRole: 'Senior Software Engineer',
-    technologyUsed: ['Angular', 'Typescript', 'Javascript', 'NodeJS', 'Google Cloud', 'SQL'],
+    name: 'Senior Software Engineer',
+    techStack: ['Angular', 'Typescript', 'Javascript', 'NodeJS', 'Google Cloud', 'SQL'],
     startDate: 'November 17, 2019',
     endDate: 'April 5, 2021',
     responsibilities: [
@@ -60,8 +65,8 @@ export const WORK_EXPERIENCE_MOCK: WorkExperience[] = [
   },
   {
     companyName: 'Accenture',
-    companyRole: 'Associate Software Engineer',
-    technologyUsed: ['Angular', 'Typescript', 'Javascript', 'C# .NET', 'Azure', 'SQL'],
+    name: 'Associate Software Engineer',
+    techStack: ['Angular', 'Typescript', 'Javascript', 'C# .NET', 'Azure', 'SQL'],
     startDate: 'November 17, 2019',
     endDate: 'April 5, 2021',
     responsibilities: [

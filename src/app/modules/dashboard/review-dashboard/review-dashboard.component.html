@@ -1,0 +1,21 @@
+<app-common-panel>
+  <p panel-header>
+    Your <span class="text-primary">Reviews</span>
+  </p>
+  <div panel-content>
+    <div *ngFor="let review of reviews | sortBy: 'id': false; let last = last">
+      <div class="review-name">{{review.companyName}}</div>
+      <div class="review-role">
+        {{review.companyRepresentativeName}} | {{review.companyRepresentativeEmail}}
+      </div>
+
+      <div class="feedback" [innerHTML]="review.feedback"></div>
+
+      <hr class="work-experience-divider" *ngIf="!last">
+    </div>
+    <div class="no-data-panel" *ngIf="!reviews?.length">
+      <mat-icon>lightbulb</mat-icon>
+      <div>It seems that there is no data fetched...</div>
+    </div>
+  </div>
+</app-common-panel>
