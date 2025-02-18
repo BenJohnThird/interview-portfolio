@@ -8,8 +8,6 @@ This project aims to test my Angular skills together with Angular features like 
 
 This uses Angular Material and other scss stylings as well as a basic mobile responsiveness.
 
-At the mean time, all of the data provided here are mock and we are using mostly localStorage for handling storage.
-
 
 ## Demo
 It is currenlty deployed to Firebase hosting and you can access it here.
