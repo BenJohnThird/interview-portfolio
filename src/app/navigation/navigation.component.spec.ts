@@ -4,7 +4,8 @@ import { NavigationComponent } from './navigation.component';
 import { MatIcon } from "@angular/material/icon";
 import Spy = jasmine.Spy;
 import { AuthenticationService } from "../services/authentication.service";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -14,12 +15,10 @@ describe('NavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [NavigationComponent],
-      imports: [
-        MatIcon,
-        HttpClientTestingModule,
-      ]
-    })
+    declarations: [NavigationComponent],
+    imports: [MatIcon],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(NavigationComponent);

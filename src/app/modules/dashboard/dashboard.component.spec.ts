@@ -5,8 +5,8 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { CommonPanelComponent } from "../../shared/common-panel/common-panel.component";
 import { MatIcon } from "@angular/material/icon";
 import { WorkExperiencesDashboardComponent } from "./work-experiences-dashboard/work-experiences-dashboard.component";
-import { HttpClient } from "@angular/common/http";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { ReviewDashboardComponent } from "./review-dashboard/review-dashboard.component";
 import { PipesModule } from "../../shared/pipes/pipes.module";
 
@@ -16,19 +16,22 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
+    declarations: [
         DashboardComponent,
         ReviewDashboardComponent,
         WorkExperiencesDashboardComponent,
-      ],
-      imports: [
-        RouterTestingModule,
-        CommonPanelComponent,
-        MatIcon,
-        HttpClientTestingModule,
-        PipesModule,
-      ]
-    })
+    ],
+    imports: [
+      RouterTestingModule,
+      CommonPanelComponent,
+      MatIcon,
+      PipesModule,
+    ],
+    providers: [
+      provideHttpClient(withInterceptorsFromDi()),
+      provideHttpClientTesting()
+    ]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(DashboardComponent);

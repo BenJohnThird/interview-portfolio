@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthenticationService } from './authentication.service';
-import { HttpClient, HttpErrorResponse, HttpHandler } from "@angular/common/http";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { HttpClient, HttpErrorResponse, HttpHandler, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { LocalStorageService } from "./local-storage.service";
 import { LocalStorageKeyEnum } from "../enums/local-storage-key-enums";
 import { of } from "rxjs";
@@ -18,14 +18,16 @@ describe('AuthenticationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         HttpClient,
         HttpHandler,
         AuthenticationService,
         LocalStorageService,
-      ]
-    });
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
     service = TestBed.inject(AuthenticationService);
     http = TestBed.inject(HttpClient);
     localStorageService = TestBed.inject(LocalStorageService);

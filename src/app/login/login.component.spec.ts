@@ -11,9 +11,9 @@ import { AuthenticationService } from "../services/authentication.service";
 import Spy = jasmine.Spy;
 import { TestingUtils } from "../testing/testing-utils";
 import { Router } from "@angular/router";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { of } from "rxjs";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { AuthenticationServiceMock } from "../mocks/auth-service.mock";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -26,22 +26,24 @@ describe('LoginComponent', () => {
   beforeEach(async () => {
 
     await TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      imports: [
-        CommonPanelComponent,
-        FormsModule,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatError,
-        MatIcon,
-        BrowserAnimationsModule,
-        HttpClientTestingModule,
-      ],
-      providers: [
-        { provide: AuthenticationService, useClass: AuthenticationServiceMock }
-      ]
-    })
+    declarations: [LoginComponent],
+    imports: [
+      CommonPanelComponent,
+      FormsModule,
+      MatFormField,
+      MatInput,
+      MatLabel,
+
+      MatError,
+      MatIcon,
+      BrowserAnimationsModule
+    ],
+    providers: [
+        { provide: AuthenticationService, useClass: AuthenticationServiceMock },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);

@@ -6,7 +6,6 @@ import { CommonPanelComponent } from "../shared/common-panel/common-panel.compon
 import { PipesModule } from "../shared/pipes/pipes.module";
 import { PortfolioService } from "../services/portfolio.service";
 import { PortfolioServiceMock } from "../mocks/portfolio-service.mock";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { HttpClient, HttpHandler } from "@angular/common/http";
 
 describe('HomeComponent', () => {

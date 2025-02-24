@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PortfolioService } from './portfolio.service';
-import { HttpClient, HttpHandler } from "@angular/common/http";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { HttpClient, HttpHandler, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
 import { of } from "rxjs";
 import { WORK_EXPERIENCE_MOCK } from "../mocks/work-experience.mocks";
 
@@ -12,12 +12,14 @@ describe('PortfolioService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [
+    imports: [],
+    providers: [
         HttpClient,
         HttpHandler,
-      ],
-    });
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting(),
+    ]
+});
     service = TestBed.inject(PortfolioService);
     http = TestBed.get(HttpClient);
   });

@@ -7,7 +7,6 @@ import { CommonPanelComponent } from "../../../shared/common-panel/common-panel.
 import { PipesModule } from "../../../shared/pipes/pipes.module";
 import { MatIcon } from "@angular/material/icon";
 import { ReviewServiceMock } from "../../../mocks/review-service.mock";
-import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('ReviewDashboardComponent', () => {
   let component: ReviewDashboardComponent;

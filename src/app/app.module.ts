@@ -26,7 +26,7 @@ import { MatButton, MatIconButton } from "@angular/material/button";
 import { MatDrawer, MatDrawerContainer } from "@angular/material/sidenav";
 import { MatIcon } from "@angular/material/icon";
 import { InterceptorModule } from "./interceptor/interceptor.module";
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { GlobalLoaderModule } from "./global-loader/global-loader.module";
 import { NgxSpinnerModule } from "ngx-spinner";
 import { MAT_DATE_FORMATS, MatNativeDateModule, provideNativeDateAdapter } from "@angular/material/core";
@@ -47,6 +47,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     LoginComponent,
     LogoutComponent
   ],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -71,12 +72,10 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatIcon,
     MatIconButton,
     InterceptorModule,
-    HttpClientModule,
     GlobalLoaderModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    NgxSpinnerModule.forRoot({ type: 'ball-fussion' }),
-  ],
+    NgxSpinnerModule.forRoot({ type: 'ball-fussion' })],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
@@ -87,8 +86,8 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
       useValue: MY_DATE_FORMATS
     }, // Provide custom date formats
     provideAnimationsAsync(),
-    provideNativeDateAdapter()
-  ],
-  bootstrap: [AppComponent]
+    provideNativeDateAdapter(),
+    provideHttpClient(withInterceptorsFromDi())
+    ],
 })
 export class AppModule { }

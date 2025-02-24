@@ -9,7 +9,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatMenu, MatMenuTrigger } from "@angular/material/menu";
 import { BreakpointObserver, BreakpointState } from "@angular/cdk/layout";
 import { of } from "rxjs";
-import { HttpClient, HttpClientModule, HttpHandler } from "@angular/common/http";
+import { HttpClient, HttpHandler } from "@angular/common/http";
 import { GlobalLoaderModule } from "./global-loader/global-loader.module";
 
 describe('AppComponent', () => {

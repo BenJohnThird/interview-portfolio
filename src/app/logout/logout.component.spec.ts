@@ -5,7 +5,8 @@ import { CommonPanelComponent } from "../shared/common-panel/common-panel.compon
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Router } from "@angular/router";
 import Spy = jasmine.Spy;
-import { HttpClientTestingModule } from "@angular/common/http/testing";
+import { provideHttpClientTesting } from "@angular/common/http/testing";
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('LogoutComponent', () => {
   let component: LogoutComponent;
@@ -15,13 +16,11 @@ describe('LogoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LogoutComponent],
-      imports: [
-        CommonPanelComponent,
-        BrowserAnimationsModule,
-        HttpClientTestingModule,
-      ],
-    })
+    declarations: [LogoutComponent],
+    imports: [CommonPanelComponent,
+        BrowserAnimationsModule],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LogoutComponent);
